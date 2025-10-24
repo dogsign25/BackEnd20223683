@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+<%@ include file="header.jsp" %>
+
+>>>>>>> b605d3c (Week07)
 <h1> 로그인 </h1>
 
 <% //자바코드: 스크립트릿 

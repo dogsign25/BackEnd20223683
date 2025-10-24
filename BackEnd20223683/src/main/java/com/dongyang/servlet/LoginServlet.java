@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
 		mdto.setPassword(password);
 		
 		MemberDAO mdao = new MemberDAO();
+<<<<<<< HEAD
 		mdao.test(mdto);
 		
 		// step2. JDBC
@@ -39,6 +40,15 @@ public class LoginServlet extends HttpServlet {
 			
 			//request.setAttribute("name", "김동양"); //리퀘스트 영역에 저장
 			
+=======
+		boolean result = mdao.loginCheck(mdto);
+		
+		// step2. JDBC
+		if(result) {
+			//성공
+			
+			//request.setAttribute("name", "김동양"); //리퀘스트 영역에 저장
+>>>>>>> b605d3c (Week07)
 			HttpSession session = request.getSession(); // 세션 영역에 저장
 			session.setAttribute("name", "김동양");
 			
@@ -46,18 +56,32 @@ public class LoginServlet extends HttpServlet {
 			//application.setAttribute("name", "김동양");
 			
 			//response.sendRedirect("loginOk.jsp"); //redirect 방식
+<<<<<<< HEAD
 			RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.jsp"); //forwarding 전달
 			dispatcher.forward(request, response);
 		} else {
 			//실패
 			//response.sendRedirect("loginFail.jsp");
 			request.getRequestDispatcher("loginFail.jsp"); //forwarding 전달
+=======
+			//RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.jsp"); //forwarding 전달
+			//dispatcher.forward(request, response);
+			
+		} else {
+			//실패
+			//response.sendRedirect("loginFail.jsp");
+			//request.getRequestDispatcher("loginFail.jsp"); //forwarding 전달
+>>>>>>> b605d3c (Week07)
 		}
 		
 		// step3. 응답문서 준비해서 응답
 		//개발자의 의도에 의해서 원하는 페이지로 틀을 바꾸는 방법
 		//redirect vs forward 방법
+<<<<<<< HEAD
 		
+=======
+		response.sendRedirect("loginForm.jsp");
+>>>>>>> b605d3c (Week07)
 		
 		
 		System.out.println("id값 : "+ id);
