@@ -32,10 +32,26 @@ public class MemberDAO {
 		
 	}
 	
-	public ArrayList<MemberDTO> selctAll(){
-		conn = JdbcConnectUtil.getConnection();
-		
-		
+	public ArrayList<MemberDTO> selectAll(){
+		ArrayList<MemberDTO> aList = new ArrayList<>();
+		try {
+			conn = JdbcConnectUtil.getConnection();
+			pstmt=conn.prepareStatement(USER_LIST);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				dto.setMemberid(rs.getString("memberid"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setEmail(rs.getString("email"));
+				aList.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return aList;
 	}
 
 	

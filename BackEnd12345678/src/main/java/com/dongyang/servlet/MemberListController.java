@@ -21,7 +21,9 @@ public class MemberListController extends HttpServlet {
 		
 		MemberDAO mdao=new MemberDAO();
 		ArrayList<MemberDTO> mList = mdao.selectAll();
-		 
+		request.setAttribute("vlist", mList);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("memberList.jsp");
+		dispatcher.forward(request, response);
 		
 		
 	}
