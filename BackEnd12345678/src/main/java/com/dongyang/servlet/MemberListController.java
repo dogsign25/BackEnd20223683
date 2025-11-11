@@ -21,8 +21,14 @@ public class MemberListController extends HttpServlet {
 		
 		MemberDAO mdao=new MemberDAO();
 		ArrayList<MemberDTO> mList = mdao.selectAll();
+		
 		request.setAttribute("vlist", mList);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("memberList.jsp");
+		request.setAttribute("name", "김동진");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("loginCheck", "ok");
+	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("memberList2.jsp");
 		dispatcher.forward(request, response);
 		
 		
