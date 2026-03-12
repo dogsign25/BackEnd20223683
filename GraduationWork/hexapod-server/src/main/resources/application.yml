@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/hexapod_db?useSSL=false&serverTimezone=Asia/Seoul
+    username: hexapod
+    password: hexapod1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update        # 개발 중엔 update, 운영은 validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+mqtt:
+  broker-url: tcp://localhost:1883   # Mosquitto 브로커 주소 (라즈베리파이 IP로 변경 가능)
+  client-id: hexapod-spring-server
+  username:                          # Mosquitto 인증 설정했으면 입력
+  password:
+  topics:
+    sensor: hexapod/+/sensors        # + : robotId 와일드카드
+    alert:  hexapod/+/alert
+    status: hexapod/+/status
+
+logging:
+  level:
+    com.hexapod: DEBUG
