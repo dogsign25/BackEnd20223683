@@ -1,0 +1,53 @@
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+@import "tailwindcss";
+/* 전역 CSS (index.css) */
+
+
+
+body {
+  font-family: 'Pretendard', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.02em; /* 건설사 특유의 묵직한 자간 */
+}
+
+
+@layer base {
+  body {
+    @apply antialiased text-slate-900 bg-slate-50;
+  }
+}
+
+@layer components {
+  /* 네비게이션 드롭다운 애니메이션 */
+  .nav-dropdown {
+    @apply absolute top-full left-0 w-48 bg-white/95 backdrop-blur-md 
+           shadow-xl rounded-2xl py-4 opacity-0 invisible translate-y-2 
+           transition-all duration-300 border border-emerald-50 z-50;
+  }
+  
+  .group:hover .nav-dropdown {
+    @apply opacity-100 visible translate-y-0;
+  }
+
+  /* 화려한 버튼 공통 스타일 */
+  .btn-primary {
+    @apply bg-gradient-to-r from-emerald-600 to-lime-500 text-white 
+           px-6 py-2.5 rounded-full font-bold shadow-lg shadow-emerald-200 
+           hover:shadow-emerald-300 hover:scale-105 active:scale-95 transition-all;
+  }
+}
+
+/* 배경 움직이는 그라데이션 효과 */
+.bg-animate {
+  background: linear-gradient(-45deg, #065f46, #059669, #10b981, #84cc16);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
